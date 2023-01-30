@@ -9,22 +9,14 @@ import { customerSchema, emailSchema, topQuerySchema } from "@/schemas";
 
 const customersRouter: Router = Router();
 
-customersRouter.post(
-  "/register",
-  validateBody(customerSchema, "validatedCustomer"),
-  registerCustomer
-);
-customersRouter.get(
-  "/rank/customers",
-  validateQuery(topQuerySchema, "topQuery"),
-  sortCustomersRank,
-  getCustomersRank
-);
-
-customersRouter.put(
-  "/update/email",
-  validateBody(emailSchema, "validatedEmail"),
-  updateCustomer
-);
+customersRouter
+  .post("/register", validateBody(customerSchema), registerCustomer)
+  .get(
+    "/rank",
+    validateQuery(topQuerySchema),
+    sortCustomersRank,
+    getCustomersRank
+  )
+  .put("/update", validateBody(emailSchema), updateCustomer);
 
 export { customersRouter };

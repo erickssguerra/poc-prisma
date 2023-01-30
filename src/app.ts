@@ -8,11 +8,11 @@ server
   .use(json())
   .use(cors())
   .get("/health", (req: Request, res: Response) => res.send("Ok"))
-  .use(coursesRouter)
-  .use(customersRouter)
-  .use(enrollmentsRouter);
+  .use("/courses",coursesRouter)
+  .use("/customers",customersRouter)
+  .use("/enroll",enrollmentsRouter);
 
-const port = +process.env.PORT || "4000";
+const port = +process.env.PORT || 4000;
 server.listen(port, () => {
   console.log(`Server running in port ${port}.`);
 });

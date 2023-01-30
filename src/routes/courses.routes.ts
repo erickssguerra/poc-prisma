@@ -11,13 +11,13 @@ import { topQuerySchema } from "@/schemas";
 const coursesRouter: Router = Router();
 
 coursesRouter.get(
-  "/rank/courses",
-  validateQuery(topQuerySchema, "topQuery"),
+  "/rank",
+  validateQuery(topQuerySchema),
   sortCoursesRank,
   getCoursesRank
 );
 coursesRouter.get(
-  "/courses/:customer_id",
+  "/:customer_id",
   customerExists,
   sortCourses,
   getByCostumerId

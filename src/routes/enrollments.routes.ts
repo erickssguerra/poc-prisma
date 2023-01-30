@@ -5,16 +5,8 @@ import { enrollmentSchema } from "@/schemas";
 
 const enrollmentsRouter: Router = Router();
 
-enrollmentsRouter.post(
-  "/enroll",
-  validateBody(enrollmentSchema, "validEnrollment"),
-  enrollCustomer
-);
-
-enrollmentsRouter.delete(
-  "/enroll",
-  validateBody(enrollmentSchema, "validEnrollment"),
-  unenrollCustomer
-);
+enrollmentsRouter
+  .post("/", validateBody(enrollmentSchema), enrollCustomer)
+  .delete("/", validateBody(enrollmentSchema), unenrollCustomer);
 
 export { enrollmentsRouter };
