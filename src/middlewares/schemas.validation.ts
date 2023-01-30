@@ -13,7 +13,11 @@ export function validateParams(schema: ObjectSchema, parameter: string) {
   return validate(schema, "params", parameter);
 }
 
-function validate(schema: ObjectSchema, type: string, parameter: string) {
+function validate(
+  schema: ObjectSchema,
+  type: "query" | "body" | "params",
+  parameter: string
+) {
   return (req: Request, res: Response, next: NextFunction) => {
     const { error } = schema.validate(req[type], { abortEarly: false });
 

@@ -6,7 +6,7 @@ import {
 import {
   sortCoursesRank,
   sortCourses,
-} from "@/middlewares/courses.middlewares.js";
+} from "../middlewares/courses.middlewares.js";
 import { customerExists } from "../middlewares/customers.middleware.js";
 import { validateQuery } from "../middlewares/schemas.validation.js";
 import { topQuerySchema } from "../schemas/top-query.schema.js";

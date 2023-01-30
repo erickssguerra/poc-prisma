@@ -1,0 +1,45 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model courses {
+  id      Int       @id @default(autoincrement())
+  name    String    @unique(map: "courses_course_key") @db.VarChar(30)
+  classes classes[]
+}
+
+model customers {
+  id          Int           @id @default(autoincrement())
+  name        String
+  cpf         String        @unique @db.VarChar(11)
+  email       String?       @unique
+  enrollments enrollments[]
+}
+
+model enrollments {
+  id          Int       @id @default(autoincrement())
+  class_id    Int
+  customer_id Int
+  classes     classes   @relation(fields: [class_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "class_fk")
+  customers   customers @relation(fields: [customer_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "customer_fk")
+}
+
+model classes {
+  id          Int           @id @default(autoincrement())
+  course_id   Int
+  time_id     Int
+  courses     courses       @relation(fields: [course_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_course_id")
+  times       times         @relation(fields: [time_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_time_id")
+  enrollments enrollments[]
+}
+
+model times {
+  id      Int       @id @default(autoincrement())
+  time    String    @db.VarChar(8)
+  classes classes[]
+}
