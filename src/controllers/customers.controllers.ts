@@ -4,7 +4,7 @@ import { Customer, EmailUpdateForm, CustomersRank } from "@/protocols";
 
 
 export async function registerCustomer(req: Request, res: Response) {
-  const customer: Customer = res.locals.validatedCustomer;
+  const customer: Customer = req.body;
   try {
     const customerName: string = await customersRepository.insertCustomer(
       customer

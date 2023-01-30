@@ -3,7 +3,7 @@ import { Enrollment, EnrollmentDetails } from "@/protocols";
 import { enrollmentsRepository } from "@/repositories";
 
 export async function enrollCustomer(req: Request, res: Response) {
-  const enrollment: Enrollment = res.locals.validEnrollment;
+  const enrollment: Enrollment = req.body;
   try {
     const enrollmentDetails: EnrollmentDetails =
       await enrollmentsRepository.enroll(enrollment);
@@ -17,7 +17,7 @@ export async function enrollCustomer(req: Request, res: Response) {
 }
 
 export async function unenrollCustomer(req: Request, res: Response) {
-  const unenrollment: Enrollment = res.locals.validEnrollment;
+  const unenrollment: Enrollment = req.body;
   try {
     const unenrollmentDetails: EnrollmentDetails =
       await enrollmentsRepository.unenroll(unenrollment);

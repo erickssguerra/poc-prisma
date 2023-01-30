@@ -1,31 +1,33 @@
 import { Request, Response, NextFunction } from "express";
+import httpStatus from "http-status";
 import { ObjectSchema } from "joi";
 
-export function validateBody(schema: ObjectSchema, parameter: string) {
-  return validate(schema, "body", parameter);
+export function validateBody(schema: ObjectSchema): ValidationMiddleware {
+  return validate(schema, "body");
 }
 
-export function validateQuery(schema: ObjectSchema, parameter: string) {
-  return validate(schema, "query", parameter);
+export function validateParams(schema: ObjectSchema): ValidationMiddleware {
+  return validate(schema, "params");
 }
 
-export function validateParams(schema: ObjectSchema, parameter: string) {
-  return validate(schema, "params", parameter);
+export function validateQuery(schema: ObjectSchema): ValidationMiddleware {
+  return validate(schema, "query");
 }
 
-function validate(
-  schema: ObjectSchema,
-  type: "query" | "body" | "params",
-  parameter: string
-) {
+function validate(schema: ObjectSchema, type: "body" | "params" | "query") {
   return (req: Request, res: Response, next: NextFunction) => {
     const { error } = schema.validate(req[type], { abortEarly: false });
 
-    if (error) {
-      const errors = error.details.map((detail) => detail.message);
-      return res.status(422).send(errors);
-    }
-    res.locals[parameter] = req[type];
-    next();
+    if (!error) return next();
+    
+    res
+      .status(httpStatus.UNPROCESSABLE_ENTITY)
+      .send(error.details.map((d) => d.message));
   };
 }
+
+type ValidationMiddleware = (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => void;

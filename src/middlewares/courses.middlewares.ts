@@ -7,7 +7,7 @@ export async function sortCoursesRank(
   res: Response,
   next: NextFunction
 ): Promise<Response<CoursesRank>> {
-  const { top } = res.locals.topQuery;
+  const { top } = req.query;
 
   if (!Number(top)) {
     try {
