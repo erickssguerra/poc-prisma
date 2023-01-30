@@ -10,4 +10,4 @@ const connectionDB = new Pool({
   database: process.env.POSTGRES_DATABASE,
 });
 
-export default connectionDB;
+export { connectionDB };

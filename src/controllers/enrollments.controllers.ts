@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import { Enrollment, EnrollmentDetails } from "../protocols/enrollment.js";
-import { enrollmentsRepository } from "../repositories/enrollments.repository.js";
+import { Enrollment, EnrollmentDetails } from "@/protocols";
+import { enrollmentsRepository } from "@/repositories";
 
 export async function enrollCustomer(req: Request, res: Response) {
   const enrollment: Enrollment = res.locals.validEnrollment;

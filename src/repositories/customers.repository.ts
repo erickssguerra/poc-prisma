@@ -1,6 +1,5 @@
-import connectionDB from "../database/connectionDB.js";
-import { Customer, EmailUpdateForm } from "../protocols/customer.js";
-import { CustomersRank } from "../protocols/customers-rank.js";
+import { connectionDB } from "@/database";
+import { Customer, EmailUpdateForm, CustomersRank } from "@/protocols";
 
 async function insertCustomer(customer: Customer): Promise<string> {
   const { rows } = await connectionDB.query(

@@ -3,14 +3,9 @@ import {
   getCustomersRank,
   registerCustomer,
   updateCustomer,
-} from "../controllers/customers.controllers.js";
-import { sortCustomersRank } from "../middlewares/customers.middleware.js";
-import {
-  validateBody,
-  validateQuery,
-} from "../middlewares/schemas.validation.js";
-import { customerSchema, emailSchema } from "../schemas/customer.schema.js";
-import { topQuerySchema } from "../schemas/top-query.schema.js";
+} from "@/controllers";
+import { sortCustomersRank, validateBody, validateQuery } from "@/middlewares";
+import { customerSchema, emailSchema, topQuerySchema } from "@/schemas";
 
 const customersRouter: Router = Router();
 

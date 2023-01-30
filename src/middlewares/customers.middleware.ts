@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
-import { CustomersRank } from "../protocols/customers-rank.js";
-import { customersRepository } from "../repositories/customers.repository.js";
+import { CustomersRank } from "@/protocols";
+import { customersRepository } from "@/repositories";
 
 export async function customerExists(
   req: Request,

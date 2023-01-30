@@ -1,7 +1,7 @@
 import { Router } from "express";
-import { enrollCustomer, unenrollCustomer } from "../controllers/enrollments.controllers.js";
-import { validateBody } from "../middlewares/schemas.validation.js";
-import { enrollmentSchema } from "../schemas/enrollment.schema.js";
+import { enrollCustomer, unenrollCustomer } from "@/controllers";
+import { validateBody } from "@/middlewares";
+import { enrollmentSchema } from "@/schemas";
 
 const enrollmentsRouter: Router = Router();
 

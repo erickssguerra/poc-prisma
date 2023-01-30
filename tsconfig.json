@@ -1,20 +1,15 @@
 {
   "compilerOptions": {
-    "esModuleInterop": true,
-    "module": "es6",
-    "target": "es6",
-    "moduleResolution": "node",
+    "module": "commonjs",
     "outDir": "dist",
-    "allowSyntheticDefaultImports": true,
-    "baseUrl": ".",
+    "esModuleInterop": true,
+    "baseUrl": "src",
     "paths": {
-      "@/*": [
-        "./src/*"
-      ]
+      "@/*": ["*"]
     },
-  },
-  "ts-node": {
-    "esm": true
+    "plugins": [
+      { "transform": "typescript-transform-paths" }
+    ]
   }
   
 }

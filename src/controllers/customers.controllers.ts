@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
-import { customersRepository } from "../repositories/customers.repository.js";
-import { Customer, EmailUpdateForm } from "../protocols/customer.js";
-import { CustomersRank } from "../protocols/customers-rank.js";
+import { customersRepository } from "@/repositories";
+import { Customer, EmailUpdateForm, CustomersRank } from "@/protocols";
+
 
 export async function registerCustomer(req: Request, res: Response) {
   const customer: Customer = res.locals.validatedCustomer;

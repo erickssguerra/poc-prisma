@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
-import { CoursesRank } from "../protocols/courses-rank.js";
-import { coursesRepository } from "../repositories/courses.repository.js";
+import { CoursesRank } from "@/protocols";
+import { coursesRepository } from "@/repositories";
 
 export async function sortCoursesRank(
   req: Request,

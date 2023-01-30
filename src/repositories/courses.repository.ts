@@ -1,7 +1,7 @@
-import connectionDB from "../database/connectionDB.js";
-import { CoursesRank } from "../protocols/courses-rank.js";
+import { connectionDB } from "@/database";
+import { CoursesRank } from "@/protocols";
 
-async function getFullRank() : Promise<CoursesRank[]> {
+async function getFullRank(): Promise<CoursesRank[]> {
   const { rows } = await connectionDB.query(`
   SELECT 
     courses.name AS course,
@@ -14,7 +14,7 @@ async function getFullRank() : Promise<CoursesRank[]> {
   const rank: CoursesRank[] = rows;
   return rank;
 }
-async function getRankByTop(top: number) : Promise<CoursesRank[]> {
+async function getRankByTop(top: number): Promise<CoursesRank[]> {
   const { rows } = await connectionDB.query(
     `
   SELECT 

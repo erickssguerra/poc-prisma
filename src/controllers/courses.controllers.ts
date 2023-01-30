@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { CoursesRank } from "../protocols/courses-rank";
+import { CoursesRank } from "@/protocols";
 
 export function getCoursesRank(req: Request, res: Response) {
   const rank: CoursesRank[] = res.locals.rank;

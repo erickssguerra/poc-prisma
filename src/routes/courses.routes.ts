@@ -1,15 +1,12 @@
 import { Router } from "express";
-import {
-  getByCostumerId,
-  getCoursesRank,
-} from "../controllers/courses.controllers.js";
+import { getByCostumerId, getCoursesRank } from "@/controllers";
 import {
   sortCoursesRank,
   sortCourses,
-} from "../middlewares/courses.middlewares.js";
-import { customerExists } from "../middlewares/customers.middleware.js";
-import { validateQuery } from "../middlewares/schemas.validation.js";
-import { topQuerySchema } from "../schemas/top-query.schema.js";
+  customerExists,
+  validateQuery,
+} from "@/middlewares";
+import { topQuerySchema } from "@/schemas";
 
 const coursesRouter: Router = Router();
 

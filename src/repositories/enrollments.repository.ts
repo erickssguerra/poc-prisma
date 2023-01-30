@@ -1,5 +1,5 @@
-import connectionDB from "../database/connectionDB.js";
-import { Enrollment, EnrollmentDetails } from "../protocols/enrollment.js";
+import {connectionDB} from "@/database";
+import { Enrollment, EnrollmentDetails } from "@/protocols";
 
 async function enroll(enrollment: Enrollment): Promise<EnrollmentDetails> {
   const { rows } = await connectionDB.query(
